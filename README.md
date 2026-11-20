@@ -21,7 +21,8 @@ css/
     flashcard.css          kartu flashcard & kartu latihan
     deck-picker.css        pemilih bab untuk deck flashcard
     sheet.css              lembar pengaturan (panel dari bawah)
-    dock.css               dock bawah: tab halaman, tab mode, pemilih bab, tombol ⚙
+    dock.css               isi dock: tab halaman, tab mode, pemilih bab, tombol ⚙
+    dock-menu.css          tampilan dock sebagai menu lipat (tombol kecil kiri bawah + daftar)
   pages/                   gaya khusus satu halaman
     bunpou.css             Bunpou (Materi, Ringkasan, Partikel)
     kanji.css              Kanji (daftar, kartu, menulis)
@@ -37,7 +38,8 @@ js/
   components/              perilaku UI bersama
     book-selector.js       dropdown Minna I/II
     dock-settings.js       tombol ⚙ tunggal di dock
-    dock-autohide.js       dock menyingkir saat scroll ke bawah
+    dock-menu.js           buka/tutup menu lipat (Esc, ketuk di luar, tutup setelah memilih)
+    dock-autohide.js       tombol menu mengecil jadi ikon saat scroll ke bawah
   pages/                   logika tiap halaman
     kotoba.js              Kotoba: tabel, flashcard, hafalan, dock
     kazu-katsuyou.js       かず・かつよう: bilangan, waktu, kata bantu bilangan, konjugasi, latihan
@@ -63,7 +65,8 @@ js/
 | menambah/mengoreksi kanji | `js/data/kanji-data.js` |
 | materi Bunpou | `js/data/bunpou-minna-1.js` / `bunpou-minna-2.js` |
 | warna Minna I / Minna II | `css/base/variables.css` / `css/themes/book2-blue.css` |
-| dock & tombol bawah | `css/components/dock.css` |
+| isi dock (tab, bab, ⚙) | `css/components/dock.css` |
+| bentuk/ukuran menu lipat | `css/components/dock-menu.css` |
 | aktifkan tab かず・かつよう di Minna II | hapus 2 aturan `html[data-book="2"]` di `css/components/dock.css` |
 
 Catatan untuk `bunpou-minna-*.js`: isinya HTML yang disimpan sebagai teks.

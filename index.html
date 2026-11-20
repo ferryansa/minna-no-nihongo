@@ -75,7 +75,8 @@
   <footer class="credit">Dibuat oleh <b>Ferryansa</b> · <a href="https://instagram.com/ferryansa" target="_blank" rel="noopener">Instagram</a> · <a href="https://linkedin.com/in/ferryansa" target="_blank" rel="noopener">LinkedIn</a> · <span class="mail">ferryansa.inbox@gmail.com</span></footer>
 
   <nav class="dock" id="dock" aria-label="Kontrol">
-    <div class="dock-in">
+    <button class="dock-toggle" id="dockToggle" type="button" aria-expanded="false" aria-controls="dockPanel"><span class="ico" aria-hidden="true"></span><span class="lbl">メニュー</span></button>
+    <div class="dock-in" id="dockPanel">
 
       <div class="dock-act" id="dockAct"></div>
       <div class="dock-tabs kt" id="dockTabsKT" role="tablist">
@@ -137,6 +138,7 @@
 <script src="js/data/kanji-data.js"></script>
 <script src="js/pages/kanji.js"></script>
 <script src="js/components/dock-settings.js"></script>
+<script src="js/components/dock-menu.js"></script>
 <script src="js/components/dock-autohide.js"></script>
 <script src="js/core/finish.js"></script>
 </body>

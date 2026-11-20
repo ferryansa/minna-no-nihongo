@@ -1,0 +1,252 @@
+/* Dock sebagai menu lipat. Dimuat setelah dock.css dan menimpanya lewat selector #dock
+   (lebih spesifik). Tombol kecil di kiri bawah (jauh dari lencana "Powered by Netlify" di
+   kanan bawah); isi dock muncul sebagai daftar vertikal di atas tombol. */
+
+/* wadah: hanya tombol kecil, tanpa bar penuh */
+#dock {
+  left: 10px;
+  right: auto;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  width: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transform: none;
+}
+
+/* tombol buka/tutup */
+#dock .dock-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0 14px 0 12px;
+  justify-content: center;
+  border: 1.5px solid var(--ai-line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sheet) 94%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--ai);
+  font: 800 .88rem/1 var(--f-body);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--ai) 22%, transparent);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s, color .15s, padding .15s;
+}
+
+#dock .dock-toggle .ico::before {
+  content: "☰";
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+#dock.open .dock-toggle {
+  background: var(--ai);
+  border-color: var(--ai);
+  color: #fff;
+}
+
+#dock.open .dock-toggle .ico::before {
+  content: "✕";
+}
+
+#dock .dock-toggle:focus-visible {
+  outline: 3px solid var(--ai);
+  outline-offset: 2px;
+}
+
+/* saat scroll ke bawah: tombol mengecil jadi ikon saja */
+#dock.dock-hide:not(.open) .dock-toggle {
+  padding: 0;
+  width: 42px;
+}
+
+#dock.dock-hide:not(.open) .dock-toggle .lbl {
+  display: none;
+}
+
+/* panel daftar */
+#dock .dock-in {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  width: min(248px, calc(100vw - 20px));
+  max-width: none;
+  max-height: calc(100dvh - 90px);
+  margin: 0;
+  padding: 12px;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  grid-template-columns: none;
+  background: var(--sheet);
+  border: 1.5px solid var(--ai-line);
+  border-radius: 18px;
+  box-shadow: 0 12px 36px color-mix(in srgb, var(--ai) 24%, transparent);
+}
+
+#dock.open .dock-in {
+  display: flex;
+}
+
+#dock [hidden] {
+  display: none !important;
+}
+
+@media (min-width: 600px) {
+  #dock .dock-in {
+    width: 280px;
+  }
+}
+
+/* urutan: Halaman → Mode → Bab → Pengaturan */
+#dock .pageswitch { order: 1; }
+#dock .dock-tabs  { order: 2; }
+#dock .dock-act   { order: 3; }
+#dock #dockSet    { order: 4; }
+
+/* kelompok: judul kecil + baris-baris */
+#dock .pageswitch,
+#dock .dock-tabs,
+#dock .dock-act {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  grid-template-columns: none;
+  grid-column: auto;
+  grid-row: auto;
+}
+
+#dock .dock-act:empty {
+  display: none;
+}
+
+#dock .pageswitch::before,
+#dock .dock-tabs::before,
+#dock .dock-act:not(:empty)::before {
+  display: block;
+  padding: 0 4px 2px;
+  color: var(--muted);
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+#dock .pageswitch::before { content: "Halaman"; }
+#dock .dock-tabs::before  { content: "Mode"; }
+#dock .dock-act:not(:empty)::before { content: "Bab"; }
+
+/* baris pilihan (halaman & mode) */
+#dock .pageswitch button,
+#dock .dock-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  flex: none;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: .92rem;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+#dock .pageswitch button i,
+#dock .dock-tabs button i {
+  display: inline !important;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+#dock .pageswitch button[aria-selected="true"],
+#dock .dock-tabs button[aria-selected="true"] {
+  background: var(--ai-soft);
+  color: var(--ai);
+  box-shadow: none;
+  font-size: .92rem;
+  padding: 0 10px;
+}
+
+#dock #dt-l[aria-selected="true"] {
+  background: var(--blue-bg);
+  color: var(--blue);
+}
+
+#dock .pageswitch .sicon,
+#dock .dock-tabs .di {
+  width: 24px;
+  height: 24px;
+  font-size: .72rem;
+}
+
+/* pemilih bab di dalam panel */
+#dock .dock-act .babbar {
+  width: 100%;
+  flex: none;
+}
+
+/* Pengaturan sebagai baris terakhir */
+#dock #dockSet {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  flex: none;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+}
+
+#dock #dockSet::after {
+  content: "せってい · Pengaturan";
+  font-size: .92rem;
+  font-weight: 800;
+  color: var(--ai);
+}
+
+/* ikon baris terpilih: terisi penuh agar terbaca di latar merah muda */
+#dock .pageswitch button[aria-selected="true"] .sicon,
+#dock .dock-tabs button[aria-selected="true"] .di {
+  background: var(--ai);
+  color: #fff;
+}
+
+#dock #ps-bp[aria-selected="true"] {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+#dock #ps-bp[aria-selected="true"] .sicon {
+  background: var(--green);
+}
+
+#dock #ps-kj[aria-selected="true"] {
+  background: var(--blue-bg);
+  color: var(--blue);
+}
+
+#dock #ps-kj[aria-selected="true"] .sicon {
+  background: var(--blue);
+}
