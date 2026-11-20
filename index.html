@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Minna no Nihongo</title>
+<meta name="theme-color" content="#E0527A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/core/book-theme.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="appTpl"><div class="wrap">
+  <header>
+    <svg class="fuji" viewBox="0 0 140 100" aria-hidden="true">
+      <circle cx="36" cy="30" r="20" fill="#E3474F"/>
+      <polygon points="10,95 70,28 130,95" fill="#5B7FC7"/>
+      <polygon points="52,48 70,28 88,48 80,44 74,50 66,44 60,50" fill="#FFFFFF"/>
+      <g fill="#F7A9C0"><circle cx="112" cy="22" r="6"/><circle cx="122" cy="34" r="4.5"/><circle cx="24" cy="78" r="5"/></g>
+      <g fill="#E0527A"><circle cx="112" cy="22" r="2"/><circle cx="24" cy="78" r="1.8"/></g>
+    </svg>
+    <div class="hbadge" id="badge" hidden></div>
+    <div class="htext">
+      <p class="eyebrow"><label class="booksel"><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Pilih buku</span><select id="bookSel"><option value="1">MINNA NO NIHONGO I</option><option value="2">MINNA NO NIHONGO II</option></select></label></p>
+      <h1 id="title"></h1>
+      <p class="h1id" id="title-id"></p>
+    </div>
+    
+    <div class="progress" id="progress">
+      <div id="prog-text">0 / 0 hafal</div>
+      <div class="bar"><i id="prog-bar" style="width:0"></i></div>
+    </div>
+  </header>
+
+
+  <div class="secbar" id="secbar"></div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="seg mode" id="modeseg" role="group" aria-label="Tampilan">
+      <button id="m-table" aria-pressed="true">ひょう<i>Tabel</i></button>
+      <button id="m-card" aria-pressed="false">フラッシュカード<i>Flashcard</i></button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div class="controls" id="controls">
+    <div class="ctl" id="hide-ctl"><span class="cl">かくす<i>Tutup kolom</i></span>
+      <button class="chip" data-hide="kana" aria-pressed="false">ふりがな<i>Furigana</i></button>
+      <button class="chip" data-hide="kanji" aria-pressed="false">かんじ<i>Kanji</i></button>
+      <button class="chip" data-hide="arti" aria-pressed="false">いみ<i>Arti</i></button>
+    </div>
+    <div class="ctl" id="front-ctl" hidden><span class="cl">おもて<i>Sisi depan</i></span>
+      <button class="chip" data-front="kanji" aria-pressed="true">かんじ<i>Kanji</i></button>
+      <button class="chip" data-front="kana" aria-pressed="false">ふりがな<i>Furigana</i></button>
+      <button class="chip" data-front="arti" aria-pressed="false">いみ<i>Arti</i></button>
+    </div>
+    <div class="ctl"><span class="cl">ならび<i>Urutan</i></span>
+      <button class="chip" id="b-shuffle" aria-pressed="false">まぜる<i>Acak</i></button>
+      <button class="chip" id="b-unlearned" aria-pressed="false">まだ<i>Belum hafal saja</i></button>
+    </div>
+  </div>
+
+  <div id="view"></div>
+
+  <div id="lampiran" hidden></div>
+
+  <div id="bp" hidden></div>
+
+  <div id="kj" hidden></div>
+
+  <footer class="credit">Dibuat oleh <b>Ferryansa</b> · <a href="https://instagram.com/ferryansa" target="_blank" rel="noopener">Instagram</a> · <a href="https://linkedin.com/in/ferryansa" target="_blank" rel="noopener">LinkedIn</a> · <span class="mail">ferryansa.inbox@gmail.com</span></footer>
+
+  <nav class="dock" id="dock" aria-label="Kontrol">
+    <div class="dock-in">
+
+      <div class="dock-act" id="dockAct"></div>
+      <div class="dock-tabs kt" id="dockTabsKT" role="tablist">
+        <button role="tab" id="dt-table"><span class="di">表</span>ひょう<i>Tabel</i></button>
+        <button role="tab" id="dt-card"><span class="di">カ</span>カード<i>Flashcard</i></button>
+        <button role="tab" id="dt-l"><span class="di">12</span>かず・かつよう<i>Bilangan</i></button>
+      </div>
+      <div class="dock-tabs bp" id="dockTabsBP" role="tablist" hidden>
+        <button role="tab" id="bp-baca"><span class="di">読</span>よむ<i>Materi</i></button>
+        <button role="tab" id="bp-sum"><span class="di">ま</span>まとめ<i>Ringkasan</i></button>
+        <button role="tab" id="bp-part"><span class="di">は</span>じょし<i>Partikel</i></button>
+      </div>
+      <div class="dock-tabs kj" id="dockTabsKJ" role="tablist" hidden>
+        <button role="tab" id="kj-list"><span class="di">字</span>いちらん<i>Daftar</i></button>
+        <button role="tab" id="kj-card"><span class="di">カ</span>カード<i>Flashcard</i></button>
+        <button role="tab" id="kj-write"><span class="di">筆</span>かく<i>Menulis</i></button>
+      </div>
+      <div class="pageswitch" role="tablist" aria-label="Halaman">
+    <button role="tab" id="ps-kt" aria-selected="true"><span class="sicon">あ</span>ことば<i>Kotoba</i></button>
+    <button role="tab" id="ps-bp" aria-selected="false"><span class="sicon">文</span>ぶんぽう<i>Bunpou</i></button>
+    <button role="tab" id="ps-kj" aria-selected="false"><span class="sicon">字</span>かんじ<i>Kanji</i></button>
+  </div>
+      <button class="dk dk-set" id="dockSet" type="button" aria-label="Pengaturan" disabled>⚙</button>
+    </div>
+  </nav>
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-bg" id="sheetBg"></div>
+    <div class="sheet-panel" role="dialog" aria-label="Pengaturan">
+      <div class="sheet-head"><b>せってい</b><span>Pengaturan</span><button class="sheet-x" id="sheetClose" aria-label="Tutup">✕</button></div>
+      <div class="sheet-body" id="sheetBody"><div id="sheetDeck"></div><div id="sheetL"></div><div id="sheetBP"></div><div id="sheetKJ"></div></div>
+      <button class="btn primary sheet-done" id="sheetDone">OK</button>
+    </div>
+  </div>
+
+  <p class="foot" id="foot" hidden></p>
+</div>
+
+
+
+
+
+</template>
+
+<!-- Urutan muat skrip penting:
+     1) core/utils        fungsi bantu global ($, $$, esc)
+     2) data/bunpou-*     isi HTML Bunpou (dipasang oleh core/mount)
+     3) core/mount        memasang template + Bunpou ke #app
+     4) components, data, pages   (data kosakata/kanji harus sebelum halamannya)
+     5) core/finish       penutup -->
+<script src="js/core/utils.js"></script>
+<script src="js/data/bunpou-minna-1.js"></script>
+<script src="js/data/bunpou-minna-2.js"></script>
+<script src="js/core/mount.js"></script>
+<script src="js/components/book-selector.js"></script>
+<script src="js/data/kotoba-data.js"></script>
+<script src="js/pages/kotoba.js"></script>
+<script src="js/pages/kazu-katsuyou.js"></script>
+<script src="js/pages/bunpou.js"></script>
+<script src="js/data/kanji-data.js"></script>
+<script src="js/pages/kanji.js"></script>
+<script src="js/components/dock-settings.js"></script>
+<script src="js/components/dock-autohide.js"></script>
+<script src="js/core/finish.js"></script>
+</body>
+</html>

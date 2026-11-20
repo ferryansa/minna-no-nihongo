@@ -1,0 +1,66 @@
+/* Variabel warna dan font. Ubah warna Minna I di sini (Minna II: themes/book2-blue.css). */
+
+:root {
+  color-scheme: light;
+  --paper: #FFF8F4;
+  --sheet: #FFFFFF;
+  --ink: #2B2A33;
+  --muted: #6B6878;
+  --line: #FDE3EA;
+  --ai: #E0527A;
+  --ai-soft: #FDE3EA;
+  --ai-ink: #FFFFFF;
+  --rose-bg: #FFF0F2;
+  --shu: #2B2A33;
+  --shu-soft: #FFE98A;
+  --ok: #3E9A4F;
+  --ok-soft: #F1FAEF;
+  --ok-line: #BFE3BE;
+  --sun: #FFF8E6;
+  --sky: #EEF5FF;
+  --mint: #F1FAEF;
+  --c: #E0527A;
+  --shadow: none;
+  --ai-line: #E9A3B7;
+  --f-jp: "M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic","Segoe UI",sans-serif;
+  --f-body: "M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic","Segoe UI",sans-serif;
+}
+
+:root {
+  --green: #4E9F5B;
+  --green-bg: #F1FAEF;
+  --green-line: #BFE3BE;
+  --yellow: #D6950F;
+  --yellow-bg: #FFF8E6;
+  --yellow-line: #F6DE9E;
+  --rose: #D9546F;
+  --rose-bg2: #FFF0F2;
+  --rose-line: #F5C3CD;
+  --blue: #3C7DD9;
+  --blue-bg: #EEF5FF;
+  --blue-line: #BCD4F5;
+  --purple: #8A5CD1;
+  --purple-bg: #F5F0FF;
+  --purple-line: #D6C6F3;
+  --orange: #E07B2E;
+  --orange-bg: #FFF3EA;
+  --orange-line: #F6CDAA;
+  --teal: #1E9A95;
+  --teal-bg: #EAF8F7;
+  --teal-line: #AEDFDC;
+  --g: var(--ai);
+  --gb: var(--rose-bg);
+  --gl: var(--line);
+}
+
+:root {
+  --btn-h: 34px;
+  --tab-h: 28px;
+  --dock-gap: 5px;
+}
+
+:root {
+  --soft-shadow: 0 6px 22px color-mix(in srgb,var(--ai) 9%,transparent);
+  --lift-shadow: 0 10px 26px color-mix(in srgb,var(--ai) 16%,transparent);
+  --radius-lg: 20px;
+}

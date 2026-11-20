@@ -1,0 +1,161 @@
+/* Dasar halaman: reset, body, lebar konten, atribut [hidden], footer kredit. */
+
+* {
+  box-sizing: border-box;
+}
+
+.wrap {
+  margin: 0 auto;
+  padding: 28px 16px 64px;
+}
+
+.foot {
+  margin-top: 22px;
+  font-size: 12.5px;
+}
+
+ruby rt {
+  font-family: var(--f-body);
+  font-weight: 400;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 14px;
+}
+
+.wrap {
+  max-width: 980px;
+  padding-top: 24px;
+}
+
+.foot {
+  border-top: 2px solid var(--line);
+  padding-top: 14px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.sc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 14px 4px 4px;
+  font-size: .8rem;
+  font-weight: 700;
+  border: 2px solid;
+}
+
+.sc b {
+  display: grid;
+  place-items: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: .9rem;
+  padding: 0 6px;
+}
+
+.sc.ok {
+  border-color: var(--ok-line);
+  color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.sc.ok b {
+  background: var(--ok);
+}
+
+.sc.ng {
+  border-color: #F5C3CD;
+  color: #D8423F;
+  background: #FFF0F2;
+}
+
+.sc.ng b {
+  background: #D8423F;
+}
+
+#secbar, #toolbar {
+  display: none !important;
+}
+
+#foot {
+  display: none !important;
+}
+
+footer.credit {
+  padding-top: 14px;
+  border-top: 2px solid var(--line);
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+footer.credit b {
+  color: var(--ai);
+}
+
+footer.credit a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--ai-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+footer.credit a:hover {
+  color: var(--ai);
+  text-decoration-color: var(--ai);
+}
+
+footer.credit .mail {
+  user-select: all;
+}
+
+body {
+  padding-bottom: calc(var(--dockh,100px) + 18px + env(safe-area-inset-bottom,0px));
+}
+
+@media (max-width:560px) {
+  .wrap {
+    padding-top: 12px;
+  }
+}
+
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(color-mix(in srgb,var(--ai) 8%,transparent) 1.1px,transparent 1.2px),
+    linear-gradient(180deg,color-mix(in srgb,var(--ai-soft) 70%,var(--paper)) 0,var(--paper) 340px);
+  background-size: 22px 22px,100% 100%;
+  background-repeat: repeat,no-repeat;
+}
+
+footer.credit {
+  margin-top: 24px;
+  opacity: .9;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

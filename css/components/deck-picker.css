@@ -1,0 +1,81 @@
+/* Pemilih bab untuk deck flashcard (ada di lembar pengaturan). */
+
+.deck {
+  flex: 1 1 100%;
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+}
+
+.deck > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.deck > summary::-webkit-details-marker {
+  display: none;
+}
+
+.deck:not([open]) {
+  gap: 0;
+}
+
+.dtog {
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.deckhead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.decksum {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.deckgrid {
+  display: grid;
+}
+
+.deckact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.deck {
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.deck {
+  box-shadow: none;
+}
+
+.deck {
+  background: var(--sheet);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+}
+
+.decksum {
+  color: var(--ai);
+  font-weight: 800;
+}
+
+.deckgrid {
+  grid-template-columns: repeat(auto-fill,minmax(50px,1fr));
+  gap: 5px;
+}
+
+.deck {
+  box-shadow: var(--soft-shadow);
+}

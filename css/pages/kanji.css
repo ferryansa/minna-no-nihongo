@@ -1,0 +1,520 @@
+/* Halaman Kanji: daftar, kartu, cara menulis (goresan SVG). */
+
+td.kanji {
+  font-family: var(--f-jp);
+  font-size: 20px;
+}
+
+@media (max-width:560px) {
+  td.kanji {
+    font-size: 16px;
+  }
+}
+
+tr.done td.kanji {
+  opacity: .55;
+}
+
+.lt td .kj {
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+td.kanji {
+  color: var(--ai);
+  font-weight: 800;
+}
+
+td.kanji .kk {
+  color: var(--ai);
+  font-weight: 800;
+}
+
+#kj {
+  display: grid;
+  gap: 14px;
+}
+
+.kj-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.kj-grp {
+  scroll-margin-top: 12px;
+}
+
+.kj-grp h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 10px;
+  font-size: 1rem;
+  color: var(--g);
+}
+
+.kj-grp h2 .gj {
+  background: var(--g);
+  color: #fff;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: .85rem;
+}
+
+.kj-grp h2 .gj rt {
+  color: #fff;
+  opacity: .85;
+}
+
+.kj-grp h2 small {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: .78rem;
+}
+
+.kj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(84px,1fr));
+  gap: 8px;
+}
+
+.kj-tile {
+  font: inherit;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 1px;
+  padding: 10px 4px 8px;
+  background: var(--sheet);
+  border: 2px solid var(--gl);
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.kj-tile:hover {
+  border-color: var(--g);
+}
+
+.kj-tile b {
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.kj-tile span {
+  font-size: .7rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.kj-tile em {
+  font-style: normal;
+  font-size: .72rem;
+  color: var(--g);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.kj-tile.done {
+  background: var(--ok-soft);
+  border-color: var(--ok-line);
+}
+
+.kj-tile.done::after {
+  content: "✓";
+  position: absolute;
+  top: 4px;
+  right: 7px;
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--ok);
+}
+
+.ksvg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ksvg .kp {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ksvg .kp.rad {
+  stroke: var(--ai);
+}
+
+.ksvg .kgrid {
+  stroke: var(--line);
+  stroke-width: .8;
+  stroke-dasharray: 3 3;
+  fill: none;
+}
+
+.ksvg .knums text {
+  font-size: 8px;
+  fill: var(--ai);
+  font-weight: 700;
+  font-family: var(--f-body);
+}
+
+.kj-card {
+  background: var(--sheet);
+  border: 2px solid var(--gl);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.kj-top {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 14px;
+  padding: 16px;
+  align-items: start;
+}
+
+@media (max-width:560px) {
+  .kj-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kj-big {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.kj-big .ksvg {
+  max-width: 260px;
+  background: var(--paper);
+  border: 2px solid var(--gl);
+  border-radius: 16px;
+}
+
+.kj-big .ksvg .kp {
+  stroke-width: 4;
+}
+
+.kj-ctl {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.kbtn {
+  font: inherit;
+  font-weight: 800;
+  font-size: .85rem;
+  min-height: 40px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--sheet);
+  color: var(--ai);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  line-height: 1.15;
+}
+
+.kbtn i {
+  font-style: normal;
+  font-size: .62rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.kbtn.pri {
+  background: var(--ai);
+  border-color: var(--ai);
+  color: #fff;
+}
+
+.kbtn[aria-pressed="true"] {
+  background: var(--rose-bg);
+  border-color: var(--ai);
+}
+
+.kj-info {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.kj-arti {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.kj-row {
+  display: grid;
+  gap: 2px;
+  background: var(--gb);
+  border: 1.5px solid var(--gl);
+  border-radius: 12px;
+  padding: 7px 12px;
+}
+
+.kj-row .kl {
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--g);
+}
+
+.kj-row .kv {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.oku {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.kj-mark {
+  font: inherit;
+  justify-self: start;
+  font-weight: 800;
+  font-size: .85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--ok-line);
+  background: var(--sheet);
+  color: var(--ok);
+  cursor: pointer;
+}
+
+.kj-mark.on {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: #fff;
+}
+
+.kj-sec {
+  border-top: 1.5px dashed var(--gl);
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.kj-sec h3 {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--g);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.kj-sec h3 i {
+  font-style: normal;
+  font-size: .75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.kj-note {
+  margin: 0;
+  font-size: .78rem;
+  color: var(--muted);
+}
+
+.kj-bushu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kj-bushu .bsvg {
+  width: 84px;
+  flex: none;
+  background: var(--paper);
+  border: 1.5px solid var(--gl);
+  border-radius: 12px;
+}
+
+.kj-bushu .bsvg .kp {
+  stroke: #C9C6D2;
+}
+
+.kj-bushu .bsvg .kp.rad {
+  stroke: var(--ai);
+}
+
+.bchar {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ai);
+  line-height: 1.1;
+}
+
+.bname {
+  font-weight: 800;
+}
+
+.barti {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.kj-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(58px,1fr));
+  gap: 6px;
+}
+
+.kstep {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+
+.kstep .ksvg {
+  background: var(--paper);
+  border: 1.5px solid var(--gl);
+  border-radius: 10px;
+}
+
+.kstep .ksvg .kp {
+  stroke: #9B98A6;
+  stroke-width: 4.2;
+}
+
+.kstep .ksvg .kp.now {
+  stroke: var(--ai);
+}
+
+.kstep .kstart {
+  fill: var(--ai);
+  opacity: .85;
+}
+
+.kstep span {
+  font-size: .68rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.kj-pad {
+  position: relative;
+  width: min(100%,300px);
+  aspect-ratio: 1;
+  justify-self: center;
+  background: var(--paper);
+  border: 2px solid var(--gl);
+  border-radius: 16px;
+  background-image: linear-gradient(var(--line),var(--line)),linear-gradient(var(--line),var(--line));
+  background-size: 100% 1px,1px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kj-ghost {
+  position: absolute;
+  inset: 0;
+  opacity: .16;
+  pointer-events: none;
+}
+
+.kj-ghost .kp {
+  stroke-width: 5;
+}
+
+.kj-ghost.off {
+  display: none;
+}
+
+.kj-pad canvas {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.kj-ex {
+  display: grid;
+  gap: 6px;
+}
+
+.kx {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2px 10px;
+  align-items: baseline;
+  background: var(--paper);
+  border-radius: 10px;
+  padding: 7px 12px;
+}
+
+.kx b {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.kx b em {
+  font-style: normal;
+  color: var(--ai);
+}
+
+.kxk {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.kxa {
+  grid-column: 1/3;
+  font-size: .85rem;
+}
+
+.kxb {
+  grid-row: 1/3;
+  grid-column: 3;
+  align-self: center;
+  font-size: .68rem;
+  font-weight: 800;
+  color: var(--g);
+  background: var(--gb);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.fc-v.kj {
+  font-size: 2.2rem;
+  color: var(--g);
+}
+
+.kj-set .chip i {
+  display: block;
+}
+
+.kj-src {
+  margin: 0;
+  padding: 6px 16px 10px;
+  text-align: right;
+  font-size: .62rem;
+  color: var(--muted);
+  opacity: .6;
+}
+
+.kj-src a {
+  color: inherit;
+}

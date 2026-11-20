@@ -1,0 +1,23 @@
+/* Tema biru untuk Minna II. */
+
+html[data-book="2"] {
+  --paper: #F3F8FE;
+  --ink: #232A36;
+  --muted: #5F6B7D;
+  --line: #D5E7F9;
+  --ai: #2B7CC4;
+  --ai-soft: #DCEDFC;
+  --ai-ink: #FFFFFF;
+  --rose-bg: #EDF5FE;
+  --ai-line: #9EC9EF;
+  --c: #2B7CC4;
+}
+
+html[data-book="2"] #bp {
+  --bg: #F3F8FE;
+  --ink: #232A36;
+  --muted: #5F6B7D;
+  --white: #FFFFFF;
+  --pink: #2B7CC4;
+  --pink-soft: #D5E7F9;
+}

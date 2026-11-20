@@ -1,0 +1,187 @@
+/* Lembar pengaturan (panel yang naik dari bawah). */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  align-items: end;
+}
+
+.sheet-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.sheet-panel {
+  position: relative;
+  background: var(--paper);
+  max-height: 82vh;
+  overflow: auto;
+  padding: 12px 14px calc(14px + env(safe-area-inset-bottom,0px));
+  display: grid;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  animation: sheetUp .2s ease-out;
+}
+
+@keyframes sheetUp {
+  from{transform:translateY(40px)}to{transform:none}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-panel {
+    animation: none;
+  }
+}
+
+.sheet-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  position: sticky;
+  top: -12px;
+  background: var(--paper);
+  padding-top: 4px;
+  z-index: 1;
+}
+
+.sheet-head b {
+  color: var(--ai);
+  font-size: 1.1rem;
+}
+
+.sheet-head span {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.sheet-x {
+  margin-left: auto;
+  font: inherit;
+  border: 2px solid var(--line);
+  background: var(--sheet);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.sheet-body {
+  display: grid;
+  gap: 12px;
+}
+
+.sheet-body:has(#sheetDeck:empty) #sheetDeck,
+.sheet-body #sheetL:empty {
+  display: none;
+}
+
+.sheet-body .controls {
+  margin: 0;
+}
+
+.sheet-done {
+  justify-self: stretch;
+}
+
+body.sheet-open {
+  overflow: hidden;
+}
+
+.rst {
+  border: 2px dashed var(--line);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 8px;
+  background: var(--sheet);
+}
+
+.rst-h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.rst-h b {
+  color: var(--ai);
+  font-size: .95rem;
+}
+
+.rst-h span {
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.rst-g {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rst-e {
+  margin: 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.chip.rst-b {
+  font-size: .8rem;
+}
+
+.chip.rst-b.arm {
+  background: var(--ai);
+  border-color: var(--ai);
+  color: #fff;
+}
+
+.chip.rst-b.arm i {
+  color: #fff;
+  opacity: .9;
+}
+
+.chip.rst-b {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.sheet-panel {
+  gap: 10px;
+}
+
+.sheet-done {
+  min-height: 42px;
+}
+
+.sheet-flag {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sheet-bg {
+  background: color-mix(in srgb,var(--ink) 38%,transparent);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.sheet-panel {
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -14px 40px rgba(0,0,0,.14);
+}
+
+.sheet-panel::before {
+  content: "";
+  justify-self: center;
+  width: 40px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+  margin-bottom: -2px;
+}
