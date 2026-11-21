@@ -220,11 +220,6 @@
   width: 0;
 }
 
-.dock-tabs a.dt-link:focus-visible {
-  outline: 3px solid var(--ai);
-  outline-offset: 2px;
-}
-
 .pageswitch button {
   font: inherit;
   font-family: var(--f-body);

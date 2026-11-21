@@ -421,23 +421,6 @@ button:focus-visible {
   transform: none;
 }
 
-.btn.ok {
-  background: var(--ok);
-  border-color: var(--ok);
-  color: #fff;
-}
-
-.btn.ok i {
-  color: #fff;
-  opacity: .9;
-}
-
-.btn.ng {
-  background: #fff;
-  border-color: #F5C3CD;
-  color: #D8423F;
-}
-
 .controls {
   gap: 8px;
   padding: 10px 12px;

@@ -1,5 +1,4 @@
 /* Kotoba page: table, flashcard, dock, settings. */
-function kaNum(n){ if(n<=10) return KANJI_NUM[n]; if(n<20) return "十"+(n%10?KANJI_NUM[n%10]:""); return KANJI_NUM[Math.floor(n/10)]+"十"+(n%10?KANJI_NUM[n%10]:""); }
 
 /* Within one chapter, a repeated word is shown only at its first occurrence */
 /* group colors (Bunpou page palette): vocabulary pink, expressions green, place names blue, the rest alternate */
@@ -112,8 +111,6 @@ function row(x){
 var N5K="日一国人年大十二本中長出三時行見月分後前生五間上東四今金九入学高円子外八六下来気小七山話女北午百書先名川千水半男西電校語土木聞食車何南万毎白天母火右読友左休父雨会社駅週曜夕冬世代早夜夏朝度春昼秋兄主自体弟妹姉医者親員族私台町地京室家場屋界院野銀館堂店道図画教理究研答習漢意味勉問題計英試験質文字力工牛肉色空音海茶紙鳥服物歌洋風料飯品犬田花魚止去走歩通待持送起転運開集動着帰立切写仕考作売知思住使始発終注映建借貸言買飲正元公広不同近有死明強楽重病別特悪急真少古赤多青安黒新心方用以事業旅口手目足";
 function ui(m){ return esc(m).replace(/([一-龯々]+)\{([^}]+)\}/g,(x,k,r)=>[...k].every(c=>N5K.includes(c))?`<ruby>${k}<rt>${r}</rt></ruby>`:r); }
 function J(m,id){ return `${ui(m)}${id?`<i>${esc(id)}</i>`:""}`; }
-var NUMR=["","いち","に","さん","よん","ご","ろく","なな","はち","きゅう"];
-function kaRead(n){ const t=Math.floor(n/10),o=n%10; let r=(t?(t>1?NUMR[t]:"")+"じゅう":"")+NUMR[o]; r=r.replace(/いち$/,"いっ").replace(/ろく$/,"ろっ").replace(/はち$/,"はっ").replace(/じゅう$/,"じゅっ"); return "だい"+r+"か"; }
 /* Every chapter uses one color: sakura pink (the theme's main color) */
 var chCol=n=>"var(--ai)";
 function setTitle(){

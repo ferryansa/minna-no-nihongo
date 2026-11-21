@@ -624,13 +624,6 @@
   border-bottom-color: var(--cl);
 }
 
-#bp .fc-big {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--c);
-  line-height: 1.4;
-}
-
 #bp .pgrid {
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(min(100%,330px),1fr));

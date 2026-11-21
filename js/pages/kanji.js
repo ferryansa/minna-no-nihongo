@@ -25,7 +25,6 @@ function examples(k){
 var kun=s=>s?s.split("、").map(p=>{ const [a,b]=p.split("."); return esc(a)+(b?`<span class="oku">${esc(b)}</span>`:""); }).join("・"):"–";
 var on=s=>s?s.split("、").map(esc).join("・"):"–";
 
-var yomi=x=>{ const ks=x.kun?x.kun.split("、"):[]; let k=ks[0]||""; if(x.g===0){ const d=ks.filter(p=>p.includes(".")); if(d.length) k=d[d.length-1]; } return [x.on.split("、")[0],k.replace(".","")].filter(Boolean).join("・"); };
 /* ---- SVG ---- */
 function svgKanji(x,o={}){
   const s=x.s, r=new Set(s.r), cur=o.upto==null?-1:o.upto;

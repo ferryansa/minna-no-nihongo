@@ -48,48 +48,6 @@ body {
   color: var(--muted);
 }
 
-.sc {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 4px 14px 4px 4px;
-  font-size: .8rem;
-  font-weight: 700;
-  border: 2px solid;
-}
-
-.sc b {
-  display: grid;
-  place-items: center;
-  min-width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: .9rem;
-  padding: 0 6px;
-}
-
-.sc.ok {
-  border-color: var(--ok-line);
-  color: var(--ok);
-  background: var(--ok-soft);
-}
-
-.sc.ok b {
-  background: var(--ok);
-}
-
-.sc.ng {
-  border-color: #F5C3CD;
-  color: #D8423F;
-  background: #FFF0F2;
-}
-
-.sc.ng b {
-  background: #D8423F;
-}
-
 #secbar, #toolbar {
   display: none !important;
 }
