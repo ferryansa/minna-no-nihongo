@@ -1,7 +1,7 @@
-/* Menu lipat: dock ditampilkan sebagai satu tombol kecil (kiri bawah) yang membuka daftar
-   Halaman / Bab / Mode / Pengaturan. Menutup sendiri setelah memilih halaman, mode, atau
-   pengaturan, saat mengetuk di luar menu, atau menekan Esc. Pemilih bab tetap terbuka
-   supaya bisa ◀ ▶ beberapa kali. */
+/* Collapsible menu: the dock is shown as one small button (bottom left) that opens a list of
+   Page / Mode / Chapter / Settings. It closes itself after choosing a page, mode, or
+   settings, when you tap outside the menu, or press Esc. The chapter selector stays open
+   so you can press ◀ ▶ several times. */
 (function(){
   var dock=document.getElementById('dock'), btn=document.getElementById('dockToggle');
   if(!dock||!btn) return;
@@ -11,7 +11,7 @@
   dock.addEventListener('click',function(e){
     if(e.target.closest&&e.target.closest('.pageswitch button, .dock-tabs button, #dockSet')) setOpen(false);
   });
-  /* composedPath dipakai karena isi #dockAct sering dirender ulang (target sudah lepas dari DOM). */
+  /* composedPath is used because the content of #dockAct is often re-rendered (the click target is already detached from the DOM). */
   document.addEventListener('click',function(e){
     var path=e.composedPath?e.composedPath():[];
     if(isOpen()&&path.indexOf(dock)<0) setOpen(false);

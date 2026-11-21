@@ -1,5 +1,5 @@
-/* ===== Halaman Kanji N5 =====
-   Data goresan: KanjiVG (c) Ulrich Apel, CC BY-SA 3.0 — https://kanjivg.tagaini.net */
+/* ===== Kanji N5 page =====
+   Stroke data: KanjiVG (c) Ulrich Apel, CC BY-SA 3.0 — https://kanjivg.tagaini.net */
 (function(){
 var GC=["rose","blue","green","orange","teal","purple","yellow","rose","blue","green"];
 var KJ=KJ_D.map((r,i)=>({i,k:r[0],on:r[1],kun:r[2],arti:r[3],bf:r[4],bn:r[5],ba:r[6],g:r[7],ly:r[8],la:r[9],s:KVG[r[0]]}));
@@ -9,7 +9,7 @@ var save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify([...learned])); }cat
 var K={mode:"list", idx:0, front:"kanji", groups:new Set(KJ_G.map((_,i)=>i)), shuffle:false, unlearned:false, order:null, cidx:0, flipped:false, guide:true, nums:false};
 try{ const v=+localStorage.getItem((MK+"kanji-idx")); if(v>=0&&v<KJ.length) K.idx=v; }catch(e){}
 
-/* contoh kata dari kosakata Minna */
+/* example words from the Minna vocabulary */
 var EX={};
 function examples(k){
   if(EX[k]) return EX[k];
@@ -21,7 +21,7 @@ function examples(k){
   out.sort((a,b)=>a.main-b.main||(a.kanji.length>8)-(b.kanji.length>8)||a.ch-b.ch);
   return EX[k]=out.slice(0,6);
 }
-/* bacaan: titik = okurigana */
+/* readings: a dot marks okurigana */
 var kun=s=>s?s.split("、").map(p=>{ const [a,b]=p.split("."); return esc(a)+(b?`<span class="oku">${esc(b)}</span>`:""); }).join("・"):"–";
 var on=s=>s?s.split("、").map(esc).join("・"):"–";
 
@@ -50,14 +50,14 @@ function play(svg){
   setTimeout(()=>{ if(tok!==animTok) return; ps.forEach(p=>{ p.style.transition=""; p.style.strokeDasharray=""; p.style.strokeDashoffset=""; }); },t+100);
 }
 
-/* ---- daftar ---- */
+/* ---- list ---- */
 function listHtml(){
   return KJ_G.map((g,gi)=>{ const its=KJ.filter(x=>x.g===gi), n=its.filter(x=>learned.has(x.k)).length;
     return `<section class="kj-grp g-${GC[gi]}" id="kjg-${gi}"><h2><span class="gj">${ui(g[1])}</span>${esc(g[0])}<small>${n}/${its.length}</small></h2>
     <div class="kj-grid">${its.map(x=>`<button class="kj-tile${learned.has(x.k)?" done":""}" data-k="${x.i}"><b>${x.k}</b><em>${esc(x.ly)}</em><span>${esc(x.la)}</span></button>`).join("")}</div></section>`; }).join("");
 }
 
-/* ---- detail / cara menulis ---- */
+/* ---- detail / how to write ---- */
 function writeHtml(){
   const x=KJ[K.idx], ex=examples(x.k), done=learned.has(x.k);
   return `<article class="kj-card g-${GC[x.g]}">

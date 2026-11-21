@@ -1,5 +1,5 @@
-/* Data kosakata per bab: [furigana, kanji, arti, catatan?] */
-/* [furigana, kanji, arti, catatan?] — kanji kosong berarti tidak ditulis dengan kanji di buku */
+/* Vocabulary data per chapter: [furigana, kanji, meaning, note?] */
+/* [furigana, kanji, meaning, note?] — an empty kanji means the book does not write the word in kanji */
 var CHAPTERS = BOOK===2 ? [
  { no:26, groups:[
   { name:"Kosakata", jp:"語彙{ごい}", items:[

@@ -1,8 +1,8 @@
-/* Dock sebagai menu lipat. Dimuat setelah dock.css dan menimpanya lewat selector #dock
-   (lebih spesifik). Tombol kecil di kiri bawah (jauh dari lencana "Powered by Netlify" di
-   kanan bawah); isi dock muncul sebagai daftar vertikal di atas tombol. */
+/* The dock as a collapsible menu. Loaded after dock.css and overrides it through the #dock
+   selector (more specific). A small button sits at the bottom left (away from the "Powered by
+   Netlify" badge at the bottom right); the dock content appears as a vertical list above it. */
 
-/* wadah: hanya tombol kecil, tanpa bar penuh */
+/* container: just a small button, no full-width bar */
 #dock {
   left: 10px;
   right: auto;
@@ -18,7 +18,7 @@
   transform: none;
 }
 
-/* tombol buka/tutup */
+/* open/close button */
 #dock .dock-toggle {
   display: inline-flex;
   align-items: center;
@@ -61,7 +61,7 @@
   outline-offset: 2px;
 }
 
-/* saat scroll ke bawah: tombol mengecil jadi ikon saja */
+/* while scrolling down: the button shrinks to an icon only */
 #dock.dock-hide:not(.open) .dock-toggle {
   padding: 0;
   width: 42px;
@@ -71,7 +71,7 @@
   display: none;
 }
 
-/* panel daftar */
+/* list panel */
 #dock .dock-in {
   position: absolute;
   left: 0;
@@ -107,13 +107,13 @@
   }
 }
 
-/* urutan: Halaman → Mode → Bab → Pengaturan */
+/* order: Page → Mode → Chapter → Settings */
 #dock .pageswitch { order: 1; }
 #dock .dock-tabs  { order: 2; }
 #dock .dock-act   { order: 3; }
 #dock #dockSet    { order: 4; }
 
-/* kelompok: judul kecil + baris-baris */
+/* groups: small heading + rows */
 #dock .pageswitch,
 #dock .dock-tabs,
 #dock .dock-act {
@@ -150,7 +150,7 @@
 #dock .dock-tabs::before  { content: "Mode"; }
 #dock .dock-act:not(:empty)::before { content: "Bab"; }
 
-/* baris pilihan (halaman & mode) */
+/* choice rows (page & mode) */
 #dock .pageswitch button,
 #dock .dock-tabs button {
   display: flex;
@@ -198,13 +198,13 @@
   font-size: .72rem;
 }
 
-/* pemilih bab di dalam panel */
+/* chapter selector inside the panel */
 #dock .dock-act .babbar {
   width: 100%;
   flex: none;
 }
 
-/* Pengaturan sebagai baris terakhir */
+/* Settings as the last row */
 #dock #dockSet {
   display: flex;
   align-items: center;
@@ -226,7 +226,7 @@
   color: var(--ai);
 }
 
-/* ikon baris terpilih: terisi penuh agar terbaca di latar merah muda */
+/* icon of the selected row: filled solid so it stays readable on the pink background */
 #dock .pageswitch button[aria-selected="true"] .sicon,
 #dock .dock-tabs button[aria-selected="true"] .di {
   background: var(--ai);

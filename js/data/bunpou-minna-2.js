@@ -1,6 +1,6 @@
-/* Materi Bunpou Minna no Nihongo II (bab 26–50): kartu rumus, arti, keterangan, contoh, dan ringkasan.
-   Isi HTML disimpan sebagai teks lalu dipasang ke #bp oleh core/mount.js.
-   Jangan memakai tanda backtick (`) atau ${ } di dalam teks ini. */
+/* Bunpou content for Minna no Nihongo II (chapters 26–50): pattern, meaning, note, example cards, and summary.
+   The HTML is stored as text and mounted into #bp by core/mount.js.
+   Do not use backticks (`) or ${ } inside this text. */
 window.BUNPOU_HTML = window.BUNPOU_HTML || {};
 window.BUNPOU_HTML[2] = String.raw`
 <section class="bab" id="bab26" data-bab="26" data-title="第26課・BAB 26 (N4)">

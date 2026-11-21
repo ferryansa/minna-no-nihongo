@@ -1,20 +1,20 @@
-/* Memasang template + isi Bunpou ke #app. Harus jalan sebelum modul halaman. */
+/* Mounts the template + Bunpou content into #app. Must run before the page modules. */
 (function(){
   var app=document.getElementById('app');
   app.appendChild(document.getElementById('appTpl').content.cloneNode(true));
-  /* Isi halaman Bunpou sesuai buku aktif (data/bunpou-minna-*.js) */
+  /* Bunpou page content for the active book (data/bunpou-minna-*.js) */
   document.getElementById('bp').innerHTML=(window.BUNPOU_HTML||{})[window.BOOK]||'';
 })();
 
-/* Ganti buku (atau lompat ke bab Bunpou): simpan pilihan lalu muat ulang halaman.
-   Memuat ulang jauh lebih sederhana dan aman dibanding menjalankan ulang semua skrip. */
+/* Switch book (or jump to a Bunpou chapter): save the choice, then reload the page.
+   Reloading is much simpler and safer than re-running every script. */
 window.setBook=function(n,jump){
   if(n!==1&&n!==2) return;
   try{
     localStorage.setItem('mnnbook',String(n));
     if(!jump){
-      /* Ganti buku (bukan lompat dari ringkasan Bunpou): mulai dari Kotoba → Tabel → bab pertama.
-         Progres hafalan TIDAK dihapus. */
+      /* Switching book (not a jump from the Bunpou summary): start from Kotoba → Table → first chapter.
+         Memorization progress is NOT deleted. */
       var mk=n===2?'mnn2-':'mnn-';
       localStorage.removeItem('mnn-page');
       ['bab','deck','kanji-idx'].forEach(function(k){ localStorage.removeItem(mk+k); });

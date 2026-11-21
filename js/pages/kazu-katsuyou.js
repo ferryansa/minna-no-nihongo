@@ -1,7 +1,7 @@
 
-/* ===== Bilangan & Konjugasi: bilangan, waktu, kata bantu bilangan, konjugasi ===== */
+/* ===== Numbers & Conjugation: numbers, time, counters, conjugation ===== */
 (function(){
-/* "*" di depan bacaan = bunyi berubah / tidak beraturan */
+/* "*" before a reading = sound change / irregular */
 var rd=s=>String(s).split("、").map(p=>p.startsWith("*")?`<span class="irr">${esc(p.slice(1))}</span>`:esc(p)).join("、");
 var rubify=s=>esc(s).replace(/([一-龯々]+)\{([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
 var N5K="日一国人年大十二本中長出三時行見月分後前生五間上東四今金九入学高円子外八六下来気小七山話女北午百書先名川千水半男西電校語土木聞食車何南万毎白天母火右読友左休父雨会社駅週曜夕冬世代早夜夏朝度春昼秋兄主自体弟妹姉医者親員族私台町地京室家場屋界院野銀館堂店道図画教理究研答習漢意味勉問題計英試験質文字力工牛肉色空音海茶紙鳥服物歌洋風料飯品犬田花魚止去走歩通待持送起転運開集動着帰立切写仕考作売知思住使始発終注映建借貸言買飲正元公広不同近有死明強楽重病別特悪急真少古赤多青安黒新心方用以事業旅口手目足";
@@ -33,7 +33,7 @@ var WMY=[["せんせんしゅう（にしゅうかんまえ）","dua minggu lalu
  ["さらいしゅう","dua minggu lagi","さらいげつ","dua bulan lagi","さらいねん","dua tahun lagi"],
  ["まいしゅう","setiap minggu","まいつき","setiap bulan","まいとし、まいねん","setiap tahun"]];
 
-/* tabel bilangan berpola: {key, t (judul), u (satuan kanji), q (soal untuk "?"), rows:[[label, bacaan]]} */
+/* patterned number table: {key, t (title), u (kanji unit), q (question for "?"), rows:[[label, reading]]} */
 var n10=(arr,q)=>arr.map((r,i)=>[i<arr.length-1?String(i+1):"?",r]);
 var JAM={key:"jam",t:"Jam",u:"～時",q:"何時",rows:[["1","いちじ"],["2","にじ"],["3","さんじ"],["4","*よじ"],["5","ごじ"],["6","ろくじ"],["7","*しちじ"],["8","はちじ"],["9","*くじ"],["10","じゅうじ"],["11","じゅういちじ"],["12","じゅうにじ"],["?","なんじ"]]};
 var MENIT={key:"menit",t:"Menit",u:"～分",q:"何分",rows:[["1","*いっぷん"],["2","にふん"],["3","*さんぷん"],["4","*よんぷん"],["5","ごふん"],["6","*ろっぷん"],["7","ななふん"],["8","*はっぷん"],["9","きゅうふん"],["10","*じゅっぷん、*じっぷん"],["15","じゅうごふん"],["30","*さんじゅっぷん、*さんじっぷん、はん"],["?","*なんぷん"]]};
@@ -66,7 +66,7 @@ var CTR=[
  {key:"hiki",u:"～匹",t:"binatang kecil, ikan, serangga",q:"何匹",rows:n10(["*いっぴき","にひき","*さんびき","よんひき","ごひき","*ろっぴき","ななひき","*はっぴき","きゅうひき","*じゅっぴき、*じっぴき","*なんびき"])}
 ];
 
-/* ---- Konjugasi: [label, bentuk ます tanpa ます, arti, bab] ---- */
+/* ---- Conjugation: [label, ます form without ます, meaning, chapter] ---- */
 var V1=[["会います［ともだちに～］","あい","bertemu (teman)",6],["遊びます","あそび","bermain",13],["洗います","あらい","mencuci",18],["あります","あり","ada, mempunyai",9],["あります","あり","ada (benda mati)",10],["あります［おまつりが～］","あり","ada, diadakan (festival)",21],["歩きます","あるき","berjalan kaki",23],["言います","いい","mengatakan, berkata",21],["行きます","いき","pergi",5],["急ぎます","いそぎ","buru-buru",14],["要ります［ビザが～］","いり","memerlukan (visa)",20],["動きます","うごき","bergerak",21],["歌います","うたい","bernyanyi",18],["売ります","うり","menjual",15],["置きます","おき","meletakkan, menaruh",15],["送ります","おくり","mengirim",7],["送ります［ひとを～］","おくり","mengantar (orang)",24],["押します","おし","menekan",16],["思い出します","おもいだし","teringat",15],["思います","おもい","mengira, berpikir",21],["泳ぎます","およぎ","berenang",13],["下ろします［おかねを～］","おろし","mengambil (uang)",16],["終わります","おわり","selesai",4],["買います","かい","membeli",6],["返します","かえし","mengembalikan",17],["帰ります","かえり","pulang",5],["かかります","かかり","memakan, perlu (waktu/uang)",11],["書きます","かき","menulis, menggambar",6],["貸します","かし","meminjamkan",7],["勝ちます","かち","menang",21],["かぶります","かぶり","memakai (topi)",22],["頑張ります","がんばり","berusaha keras",25],["聞きます","きき","mendengar",6],["聞きます［せんせいに～］","きき","bertanya (kepada guru)",23],["切ります","きり","memotong",7],["消します","けし","mematikan",14],["触ります［ドアに～］","さわり","menyentuh (pintu)",23],["知ります","しり","mengetahui",15],["吸います［たばこを～］","すい","merokok",6],["住みます","すみ","tinggal",15],["座ります","すわり","duduk",14],["出します","だし","mengeluarkan, mengirim",16],["立ちます","たち","berdiri",14],["使います","つかい","memakai",14],["着きます","つき","tiba, sampai",25],["作ります、造ります","つくり","membuat",15],["連れて 行きます","つれて いき","mengajak pergi (orang)",24],["手伝います","てつだい","membantu",14],["泊まります［ホテルに～］","とまり","menginap (di hotel)",19],["取ります","とり","mengambil",14],["撮ります［しゃしんを～］","とり","mengambil (foto)",6],["取ります［としを～］","とり","bertambah tua",25],["直します","なおし","mengoreksi",24],["なくします","なくし","kehilangan",17],["習います","ならい","belajar (dari orang)",7],["なります","なり","menjadi",19],["脱ぎます","ぬぎ","melepas (baju, sepatu)",17],["登ります、上ります","のぼり","naik",19],["飲みます","のみ","minum",6],["飲みます","のみ","minum (minuman keras)",16],["飲みます［くすりを～］","のみ","minum (obat)",17],["乗ります［でんしゃに～］","のり","naik (kereta)",16],["入ります［きっさてんに～］","はいり","masuk (kedai kopi)",14],["入ります［だいがくに～］","はいり","masuk (universitas)",16],["入ります［おふろに～］","はいり","mandi berendam",17],["はきます","はき","memakai (sepatu, celana)",22],["働きます","はたらき","bekerja",4],["話します","はなし","berbicara",14],["払います","はらい","membayar",17],["弾きます","ひき","memainkan (piano, gitar)",18],["引きます","ひき","menarik",23],["降ります［あめが～］","ふり","turun (hujan)",14],["曲がります［みぎへ～］","まがり","belok (ke kanan)",23],["待ちます","まち","menunggu",14],["回します","まわし","memutar",23],["持ちます","もち","membawa, memegang",14],["持って 行きます","もって いき","membawa pergi",17],["もらいます","もらい","menerima",7],["役に 立ちます","やくに たち","berguna",21],["休みます","やすみ","beristirahat, libur",4],["休みます［かいしゃを～］","やすみ","tidak masuk (kerja)",11],["呼びます","よび","memanggil",14],["読みます","よみ","membaca",6],["わかります","わかり","mengerti",9],["渡ります［はしを～］","わたり","menyeberang (jembatan)",23]];
 var V2=[["開けます","あけ","membuka",14],["あげます","あげ","memberikan",7],["集めます","あつめ","mengumpulkan",18],["浴びます［シャワーを～］","あび","mandi (pancuran)",16],["います","い","ada (makhluk hidup)",10],["います［こどもが～］","い","mempunyai (anak)",11],["います［にほんに～］","い","ada, tinggal (di Jepang)",11],["入れます","いれ","memasukkan",16],["生まれます","うまれ","lahir",22],["起きます","おき","bangun",4],["教えます","おしえ","mengajar",7],["教えます［じゅうしょを～］","おしえ","memberitahukan (alamat)",14],["覚えます","おぼえ","mengingat, menghafal",17],["降ります［でんしゃを～］","おり","turun (dari kereta)",16],["換えます","かえ","menukar, mengganti",18],["変えます","かえ","mengubah",23],["かけます［でんわを～］","かけ","menelepon",7],["かけます［めがねを～］","かけ","memakai (kacamata)",22],["借ります","かり","meminjam",7],["考えます","かんがえ","berpikir",25],["着ます","き","memakai (kemeja)",22],["気を つけます","きを つけ","berhati-hati",21],["くれます","くれ","memberi (kepada saya)",24],["閉めます","しめ","menutup",14],["調べます","しらべ","memeriksa",20],["捨てます","すて","membuang",18],["食べます","たべ","makan",6],["足ります","たり","cukup",25],["疲れます","つかれ","lelah",13],["つけます","つけ","menyalakan",14],["出かけます","でかけ","pergi keluar",17],["できます","でき","dapat, bisa",18],["出ます［おつりが～］","で","keluar (uang kembalian)",23],["出ます［きっさてんを～］","で","keluar (dari kedai kopi)",14],["出ます［だいがくを～］","で","tamat (universitas)",16],["止めます","とめ","menghentikan, memarkir",14],["寝ます","ね","tidur",4],["乗り換えます","のりかえ","ganti kendaraan",16],["始めます","はじめ","memulai",16],["負けます","まけ","kalah",21],["見せます","みせ","memperlihatkan",14],["見ます","み","melihat, menonton",6],["迎えます","むかえ","menjemput",13],["やめます［かいしゃを～］","やめ","berhenti (kerja)",21],["忘れます","わすれ","lupa",17]];
 var V3=[["案内します","あんないし","memandu, mengantarkan",24],["運転します","うんてんし","menyetir",18],["買い物します","かいものし","berbelanja",13],["来ます","き","datang",5],["結婚します","けっこんし","menikah",13],["見学します","けんがくし","kunjungan belajar",16],["研究します","けんきゅうし","meneliti",15],["コピーします","コピーし","memfotokopi",14],["散歩します［こうえんを～］","さんぽし","jalan-jalan (di taman)",13],["残業します","ざんぎょうし","lembur",17],["します","し","melakukan, mengerjakan",6],["します［ネクタイを～］","し","memakai (dasi)",22],["修理します","しゅうりし","memperbaiki",20],["出張します","しゅっちょうし","dinas ke luar kota",17],["紹介します","しょうかいし","memperkenalkan",24],["食事します","しょくじし","makan",13],["心配します","しんぱいし","khawatir",17],["説明します","せつめいし","menjelaskan",24],["洗濯します","せんたくし","mencuci pakaian",19],["掃除します","そうじし","membersihkan",19],["連れて 来ます","つれて き","membawa datang (orang)",24],["電話します","でんわし","menelepon",16],["勉強します","べんきょうし","belajar",4],["持って 来ます","もって き","membawa datang",17],["予約します","よやくし","memesan, reservasi",18],["留学します","りゅうがくし","belajar di luar negeri",21]];
@@ -98,7 +98,7 @@ window.__VERBS=VERBS;
 
 /* ---- state & render ---- */
 var L={sec:"bil",grp:"all",bab:BOOK===2?50:25,qset:"ctr",qform:"te",shown:false,idx:0,shuffle:false,unlearned:false,order:null};
-/* Dipanggil setiap kali pindah ke かず・かつよう: selalu mulai dari bagian Bilangan */
+/* Called every time the user switches to かず・かつよう: always start from the Numbers section */
 window.resetLampiran=function(){ L.sec="bil"; L.idx=0; L.shown=false; };
 var QKEY=(MK+"renshuu-v1"); let learnedQ=new Set();
 try{ learnedQ=new Set(JSON.parse(localStorage.getItem(QKEY)||"[]")); }catch(e){}
@@ -168,8 +168,8 @@ function secVerb(){
   ${vfilterHtml()}<p class="vcount">${list.length} kata kerja</p>${list.length?html:`<p class="sub">Tidak ada kata kerja untuk filter ini.</p>`}</div>`;
 }
 
-/* ---- Latihan ---- */
-/* arti bahasa Indonesia untuk jawaban latihan */
+/* ---- Practice ---- */
+/* Indonesian meanings for the practice answers */
 var SAT=["","satu","dua","tiga","empat","lima","enam","tujuh","delapan","sembilan"];
 function idWords(n){
   if(n===0) return "nol";

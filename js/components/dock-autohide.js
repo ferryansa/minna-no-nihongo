@@ -1,8 +1,8 @@
-/* Dock otomatis menyingkir saat Anda scroll ke bawah, muncul lagi saat scroll ke atas,
-   di puncak/dasar halaman, atau saat ada fokus di dalam dock.
-   TIDAK pernah menyembunyikan dock di mode flashcard/latihan (kartu dipusatkan lewat
-   scroll otomatis, dan tombol ⚙ ada di dock), maupun tepat setelah Anda menekan tombol dock
-   (pindah halaman/mode sering memicu scroll otomatis). */
+/* The dock collapses automatically while you scroll down and comes back when you scroll up,
+   at the top/bottom of the page, or when focus is inside the dock.
+   It NEVER collapses in flashcard/practice mode (the card is centered by an automatic
+   scroll, and the ⚙ button lives in the dock), nor right after you press a dock button
+   (switching page/mode often triggers an automatic scroll). */
 (function(){
   var dock=document.getElementById('dock'); if(!dock) return;
   var last=window.scrollY, ticking=false, THRESH=10, quietUntil=0;
@@ -10,7 +10,7 @@
   function flashcardVisible(){
     return [].some.call(document.querySelectorAll('.fz'),function(el){ return !el.closest('[hidden]'); });
   }
-  /* Hanya fokus dari keyboard yang menahan dock; fokus sisa dari ketukan/klik tidak. */
+  /* Only keyboard focus keeps the dock open; leftover focus from a tap/click does not. */
   function keyboardFocusInDock(){
     var a=document.activeElement;
     return !!(a&&dock.contains(a)&&a.matches&&a.matches(':focus-visible'));

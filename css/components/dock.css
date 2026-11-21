@@ -1,5 +1,5 @@
-/* Isi menu (dulu dock bawah): tab halaman (ことば/ぶんぽう/かんじ), tab mode, pemilih bab, tombol ⚙.
-   Bentuk menu lipatnya (tombol, panel, daftar) diatur di dock-menu.css yang dimuat sesudah ini. */
+/* Menu content (formerly the bottom dock): page tabs (ことば/ぶんぽう/かんじ), mode tabs, chapter selector, ⚙ button.
+   The collapsible menu shape (button, panel, list) is defined in dock-menu.css, loaded after this file. */
 
 .babbar {
   display: flex;

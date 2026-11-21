@@ -1,4 +1,4 @@
-/* Halaman かず・かつよう: bilangan, waktu, kata bantu bilangan, konjugasi, latihan. */
+/* かず・かつよう page: numbers, time, counters, conjugation, practice. */
 
 .lsec h2 .hj {
   font-family: var(--f-jp);
@@ -599,7 +599,7 @@
   box-shadow: var(--soft-shadow);
 }
 
-/* Kuis memakai .quiz (kartu 14px) sekaligus .fz (kartu tengah layar, 10px): kunci eksplisit agar tidak bergantung urutan impor. */
+/* The quiz uses both .quiz (14px card) and .fz (screen-centered card, 10px): set the gap explicitly so it does not depend on import order. */
 .quiz.fz {
   gap: 10px;
 }

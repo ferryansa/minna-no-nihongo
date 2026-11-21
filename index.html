@@ -120,12 +120,12 @@
 
 </template>
 
-<!-- Urutan muat skrip penting:
-     1) core/utils        fungsi bantu global ($, $$, esc)
-     2) data/bunpou-*     isi HTML Bunpou (dipasang oleh core/mount)
-     3) core/mount        memasang template + Bunpou ke #app
-     4) components, data, pages   (data kosakata/kanji harus sebelum halamannya)
-     5) core/finish       penutup -->
+<!-- Script load order matters:
+     1) core/utils        global helpers ($, $$, esc)
+     2) data/bunpou-*     Bunpou HTML content (mounted by core/mount)
+     3) core/mount        mounts the template + Bunpou into #app
+     4) components, data, pages   (vocabulary/kanji data must load before their pages)
+     5) core/finish       wrap-up -->
 <script src="js/core/utils.js"></script>
 <script src="js/data/bunpou-minna-1.js"></script>
 <script src="js/data/bunpou-minna-2.js"></script>

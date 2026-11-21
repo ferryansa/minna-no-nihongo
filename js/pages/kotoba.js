@@ -1,8 +1,8 @@
-/* Halaman Kotoba: tabel, flashcard, dock, pengaturan. */
+/* Kotoba page: table, flashcard, dock, settings. */
 function kaNum(n){ if(n<=10) return KANJI_NUM[n]; if(n<20) return "十"+(n%10?KANJI_NUM[n%10]:""); return KANJI_NUM[Math.floor(n/10)]+"十"+(n%10?KANJI_NUM[n%10]:""); }
 
-/* Dalam satu bab, kata yang sama hanya ditampilkan di kemunculan pertama */
-/* warna kelompok (palet halaman Bunpou): kosakata merah muda, ungkapan hijau, nama tempat biru, lainnya bergiliran */
+/* Within one chapter, a repeated word is shown only at its first occurrence */
+/* group colors (Bunpou page palette): vocabulary pink, expressions green, place names blue, the rest alternate */
 var GC_REST=["yellow","purple","teal","orange"];
 CHAPTERS.forEach(ch=>{ let ri=0; ch.groups.forEach(g=>{
   g.gc = /^Kosakata/.test(g.name)?(BOOK===2?"blue":"rose") : /^Ungkapan/.test(g.name)?"green" : /Nama|Negara|tempat/i.test(g.name)?(BOOK===2?"rose":"blue") : GC_REST[(ri++)%GC_REST.length];
@@ -114,7 +114,7 @@ function ui(m){ return esc(m).replace(/([一-龯々]+)\{([^}]+)\}/g,(x,k,r)=>[..
 function J(m,id){ return `${ui(m)}${id?`<i>${esc(id)}</i>`:""}`; }
 var NUMR=["","いち","に","さん","よん","ご","ろく","なな","はち","きゅう"];
 function kaRead(n){ const t=Math.floor(n/10),o=n%10; let r=(t?(t>1?NUMR[t]:"")+"じゅう":"")+NUMR[o]; r=r.replace(/いち$/,"いっ").replace(/ろく$/,"ろっ").replace(/はち$/,"はっ").replace(/じゅう$/,"じゅっ"); return "だい"+r+"か"; }
-/* Semua bab memakai satu warna: merah muda sakura (warna utama tema) */
+/* Every chapter uses one color: sakura pink (the theme's main color) */
 var chCol=n=>"var(--ai)";
 function setTitle(){
   const root=document.documentElement, b=$("#badge");
@@ -225,7 +225,7 @@ function render(){
   S.mode==="table"?renderTable():renderCard();
 }
 
-/* geser kartu: kanan = おぼえた, kiri = あとで */
+/* swipe a card: right = おぼえた (memorized), left = あとで (later) */
 window.flyCard=(el,dir,done)=>{ if(el._fly) return; el._fly=1; el.style.transition="transform .22s ease-in, opacity .22s";
   el.style.setProperty(dir>0?"--sr":"--sl",1); el.style.transform=`translateX(${dir*Math.max(window.innerWidth,600)}px) rotate(${dir*18}deg)`; el.style.opacity="0"; setTimeout(done,200); };
 window.attachSwipe=(el,onLeft,onRight)=>{

@@ -1,78 +1,78 @@
 # Minna no Nihongo
 
-Aplikasi belajar Minna no Nihongo I (bab 1–25) dan II (bab 26–50): Kotoba (tabel + flashcard),
-かず・かつよう (bilangan & konjugasi, hanya Minna I), Bunpou, dan Kanji.
+A study app for Minna no Nihongo I (chapters 1–25) and II (chapters 26–50): Kotoba (table + flashcards),
+かず・かつよう (numbers & conjugation, Minna I only), Bunpou, and Kanji.
 
-**Cara pakai:** buka `index.html` di browser. Tidak perlu server, tidak perlu instalasi.
+**How to use:** open `index.html` in a browser. No server and no installation needed.
 
-## Susunan folder
+## Folder structure
 
 ```
-index.html                 kerangka halaman (header, dock, lembar pengaturan) + daftar skrip
+index.html                 page skeleton (header, dock, settings sheet) + script list
 css/
-  main.css                 titik masuk: mengimpor semua CSS berurutan (urutan = urutan cascade)
+  main.css                 entry point: imports every CSS file in order (import order = cascade order)
   base/
-    variables.css          warna & font (ubah warna Minna I di sini)
-    layout.css             reset, body, lebar konten, [hidden], footer kredit
-  components/              bagian UI yang dipakai di banyak halaman
-    header.css             judul, ilustrasi Fuji, bar progres, pemilih buku
-    buttons.css            tombol, chip, kontrol, label dwibahasa
-    table.css              tabel kosakata & kotak centang hafal
-    flashcard.css          kartu flashcard & kartu latihan
-    deck-picker.css        pemilih bab untuk deck flashcard
-    sheet.css              lembar pengaturan (panel dari bawah)
-    dock.css               isi dock: tab halaman, tab mode, pemilih bab, tombol ⚙
-    dock-menu.css          tampilan dock sebagai menu lipat (tombol kecil kiri bawah + daftar)
-  pages/                   gaya khusus satu halaman
-    bunpou.css             Bunpou (Materi, Ringkasan, Partikel)
-    kanji.css              Kanji (daftar, kartu, menulis)
+    variables.css          colors & fonts (change the Minna I colors here)
+    layout.css             reset, body, content width, [hidden], credit footer
+  components/              UI parts shared by many pages
+    header.css             title, Mt. Fuji illustration, progress bar, book selector
+    buttons.css            buttons, chips, controls, bilingual labels
+    table.css              vocabulary table & "memorized" checkbox
+    flashcard.css          flashcards & practice cards
+    deck-picker.css        chapter picker for the flashcard deck
+    sheet.css              settings sheet (panel from the bottom)
+    dock.css               menu content: page tabs, mode tabs, chapter selector, ⚙ button
+    dock-menu.css          the dock as a collapsible menu (small button bottom left + list)
+  pages/                   styles for a single page
+    bunpou.css             Bunpou (Material, Summary, Particles)
+    kanji.css              Kanji (list, cards, writing)
     kazu-katsuyou.css      かず・かつよう
   themes/
-    book2-blue.css         tema biru Minna II (menukar variabel warna)
+    book2-blue.css         blue theme for Minna II (swaps the color variables)
 js/
-  core/                    fondasi, dimuat paling awal / paling akhir
-    book-theme.js          menentukan Minna I/II (URL hash atau localStorage)
-    utils.js               fungsi bantu global: $, $$, esc
-    mount.js               memasang template + isi Bunpou; setBook() untuk ganti buku
-    finish.js              penutup: membersihkan hash lompatan di URL
-  components/              perilaku UI bersama
-    book-selector.js       dropdown Minna I/II
-    dock-settings.js       tombol ⚙ tunggal di dock
-    dock-menu.js           buka/tutup menu lipat (Esc, ketuk di luar, tutup setelah memilih)
-    dock-autohide.js       tombol menu mengecil jadi ikon saat scroll ke bawah
-  pages/                   logika tiap halaman
-    kotoba.js              Kotoba: tabel, flashcard, hafalan, dock
-    kazu-katsuyou.js       かず・かつよう: bilangan, waktu, kata bantu bilangan, konjugasi, latihan
-    bunpou.js              Bunpou: materi, ringkasan, partikel, lompat antar bab
-    kanji.js               Kanji: daftar, kartu, cara menulis
-  data/                    isi materi (edit di sini untuk menambah/mengoreksi)
-    kotoba-data.js         kosakata per bab, kedua buku
-    kanji-data.js          daftar kanji + data goresan (KanjiVG)
-    bunpou-minna-1.js      materi Bunpou bab 1–25 (HTML sebagai teks)
-    bunpou-minna-2.js      materi Bunpou bab 26–50 (HTML sebagai teks)
+  core/                    foundation, loaded first / last
+    book-theme.js          decides Minna I/II (URL hash or localStorage)
+    utils.js               global helpers: $, $$, esc
+    mount.js               mounts the template + Bunpou content; setBook() switches books
+    finish.js              wrap-up: clears the jump hash from the URL
+  components/              shared UI behavior
+    book-selector.js       Minna I/II dropdown
+    dock-settings.js       the single ⚙ button in the menu
+    dock-menu.js           open/close the collapsible menu (Esc, tap outside, closes after a choice)
+    dock-autohide.js       the menu button shrinks to an icon while scrolling down
+  pages/                   logic for each page
+    kotoba.js              Kotoba: table, flashcards, memorization, dock
+    kazu-katsuyou.js       かず・かつよう: numbers, time, counters, conjugation, practice
+    bunpou.js              Bunpou: material, summary, particles, jump between chapters
+    kanji.js               Kanji: list, cards, how to write
+  data/                    learning content (edit here to add or correct material)
+    kotoba-data.js         vocabulary per chapter, both books
+    kanji-data.js          kanji list + stroke data (KanjiVG)
+    bunpou-minna-1.js      Bunpou material, chapters 1–25 (HTML stored as text)
+    bunpou-minna-2.js      Bunpou material, chapters 26–50 (HTML stored as text)
 ```
 
-## Aturan penamaan
-- Nama file memakai bahasa Inggris atau romaji Jepang: `kotoba`, `bunpou`, `kanji`, `kazu-katsuyou`.
-- Folder menunjukkan peran: `core` (fondasi), `components` (bagian UI), `pages` (satu halaman),
-  `data` (isi materi), `themes` (warna per buku).
-- Satu halaman = satu file CSS + satu file JS dengan nama sama (`pages/bunpou.css` ↔ `pages/bunpou.js`).
+## Naming rules
+- File names use English or Japanese romaji: `kotoba`, `bunpou`, `kanji`, `kazu-katsuyou`.
+- Folders show the role: `core` (foundation), `components` (UI parts), `pages` (one page),
+  `data` (learning content), `themes` (colors per book).
+- One page = one CSS file + one JS file with the same name (`pages/bunpou.css` ↔ `pages/bunpou.js`).
 
-## Mengubah sesuatu
-| Ingin mengubah… | Edit file |
+## Changing things
+| To change… | Edit |
 |---|---|
-| menambah/mengoreksi kosakata | `js/data/kotoba-data.js` |
-| menambah/mengoreksi kanji | `js/data/kanji-data.js` |
-| materi Bunpou | `js/data/bunpou-minna-1.js` / `bunpou-minna-2.js` |
-| warna Minna I / Minna II | `css/base/variables.css` / `css/themes/book2-blue.css` |
-| isi dock (tab, bab, ⚙) | `css/components/dock.css` |
-| bentuk/ukuran menu lipat | `css/components/dock-menu.css` |
-| aktifkan tab かず・かつよう di Minna II | hapus 2 aturan `html[data-book="2"]` di `css/components/dock.css` |
+| add/correct vocabulary | `js/data/kotoba-data.js` |
+| add/correct kanji | `js/data/kanji-data.js` |
+| Bunpou material | `js/data/bunpou-minna-1.js` / `bunpou-minna-2.js` |
+| Minna I / Minna II colors | `css/base/variables.css` / `css/themes/book2-blue.css` |
+| menu content (tabs, chapter, ⚙) | `css/components/dock.css` |
+| menu shape/size | `css/components/dock-menu.css` |
+| enable the かず・かつよう tab in Minna II | remove the 2 `html[data-book="2"]` rules in `css/components/dock.css` |
 
-Catatan untuk `bunpou-minna-*.js`: isinya HTML yang disimpan sebagai teks.
-Jangan memakai tanda backtick (`` ` ``) atau `${ }` di dalamnya.
+Note for `bunpou-minna-*.js`: the content is HTML stored as text.
+Do not use backticks (`` ` ``) or `${ }` inside it.
 
-## Catatan teknis
-- Ganti buku memuat ulang halaman; progres hafalan disimpan terpisah per buku di localStorage dan tidak terhapus.
-- Urutan `@import` di `css/main.css` dan urutan `<script>` di `index.html` penting; jangan diacak.
-- Data goresan kanji: KanjiVG © Ulrich Apel, CC BY-SA 3.0.
+## Technical notes
+- Switching books reloads the page; memorization progress is stored separately per book in localStorage and is not deleted.
+- The `@import` order in `css/main.css` and the `<script>` order in `index.html` matter; do not reshuffle them.
+- Kanji stroke data: KanjiVG © Ulrich Apel, CC BY-SA 3.0.

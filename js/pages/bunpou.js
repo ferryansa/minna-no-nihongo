@@ -1,15 +1,15 @@
 
-/* ===== Halaman Bunpou (di dalam halaman yang sama) ===== */
+/* ===== Bunpou page (inside the same page) ===== */
 (function(){
 var nBab=b=>document.querySelectorAll('#bab'+b+' article.row').length;
 var B={mode:"baca"};
 var BABS_BP=[...document.querySelectorAll("#bp section.bab")].map(s=>+s.id.slice(3)).filter(n=>n>0), FIRSTB=BABS_BP[0], LASTB=BABS_BP[BABS_BP.length-1];
 
-/* bab dipakai bersama dengan halaman Kotoba (S.ch / S.lastCh di skrip Kotoba) */
+/* the chapter is shared with the Kotoba page (S.ch / S.lastCh in the Kotoba script) */
 var curBab=()=>{ const n=(S.ch==="L"?S.lastCh:S.ch); return BABS_BP.includes(n)?n:FIRSTB; };
 function setBab(n){ S.lastCh=n; if(S.ch!=="L") S.ch=n; S.idx=0; S.flipped=false; try{ localStorage.setItem((MK+"bab"),String(n)); }catch(e){} }
 
-/* ---- ringkasan partikel ---- */
+/* ---- particle summary ---- */
 var PART=BOOK===2?[
  {p:"は",r:"wa",cls:"wa",u:[["Objek jadi topik (好き・あります)",26,6,"時間{じかん}[は] ありますが、お金{かね}は ありません。","Waktu ada, tapi uang tidak."],["Kontras, partikel + は",27,5,"この 店{みせ}で[は] カードが 使{つか}えません。","Di toko ini tidak bisa pakai kartu."],["Jumlah + は (paling sedikit)",42,4,"[1週間|いっしゅうかん][は] かかります。","Setidaknya perlu seminggu."]]},
  {p:"が",r:"ga",cls:"",u:[["Objek bentuk potensial",27,2,"日本語{にほんご}[が] 話{はな}せます。","Bisa berbicara bahasa Jepang."],["Terlihat / terdengar",27,3,"富士山{ふじさん}[が] 見{み}えます。","Gunung Fuji terlihat."],["Keadaan (自動詞 + ています)",29,1,"窓{まど}[が] 割{わ}れて います。","Jendelanya pecah."],["Hasil disengaja (～て あります)",30,1,"壁{かべ}に 絵{え}[が] 掛{か}けて あります。","Lukisan tergantung di dinding."],["V のが 好き / 上手",38,2,"絵{え}を かくの[が] 好{す}きです。","Saya suka menggambar."],["Indra: N が します",47,3,"いい におい[が] します。","Tercium bau harum."]]},
@@ -67,9 +67,9 @@ function syncPart(){ if(window.APP_PAGE!=="bp"||B.mode!=="part"||Date.now()<ppLo
   setPI(k); }
 window.addEventListener("scroll",()=>requestAnimationFrame(syncPart),{passive:true});
 
-/* navigasi まとめ: lompat antar bab */
+/* まとめ navigation: jump between chapters */
 var SB=$$("#babR .sbab");
-/* nomor bab sebenarnya dari judul kartu ("BAB 26"); cadangan: bab pertama + urutan */
+/* real chapter number from the card title ("BAB 26"); fallback: first chapter + index */
 var sumNo=(el,i)=>{ const h=el.querySelector("h3"), m=h&&h.textContent.match(/\d+/); return m?+m[0]:FIRSTB+i; }; SB.forEach((el,i)=>{ el.id="sum-"+(i+1); el.style.scrollMarginTop="12px"; });
 var SI=0, siLock=0;
 function setSI(k){ if(k===SI) return; SI=k; const sel=$("#smSel"); if(!sel) return; sel.value=String(k); $("#smPrev").disabled=k<=0; $("#smNext").disabled=k>=SB.length-1; }
@@ -80,7 +80,7 @@ function syncSum(){ if(window.APP_PAGE!=="bp"||B.mode!=="sum"||Date.now()<siLock
   setSI(k); }
 window.addEventListener("scroll",()=>requestAnimationFrame(syncSum),{passive:true});
 
-/* --- pindah halaman --- */
+/* --- page switching --- */
 function setPage(p){
   window.APP_PAGE=p; try{ localStorage.setItem("mnn-page",p); }catch(e){}
   ["kt","bp","kj"].forEach(k=>{ $("#ps-"+k).setAttribute("aria-selected",p===k); $("#dockTabs"+k.toUpperCase()).hidden=p!==k; });

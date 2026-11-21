@@ -1,10 +1,10 @@
-/* Titik masuk CSS. Urutan impor = urutan cascade (yang di bawah menang bila bentrok):
-   base → components → pages → themes. Jangan diubah sembarangan. */
-/* dasar */
+/* CSS entry point. Import order = cascade order (later rules win on conflict):
+   base → components → pages → themes. Do not reorder carelessly. */
+/* base */
 @import url("base/variables.css");
 @import url("base/layout.css");
 
-/* komponen yang dipakai di banyak halaman */
+/* components shared by many pages */
 @import url("components/header.css");
 @import url("components/buttons.css");
 @import url("components/table.css");
@@ -14,10 +14,10 @@
 @import url("components/dock.css");
 @import url("components/dock-menu.css");
 
-/* gaya khusus per halaman */
+/* page-specific styles */
 @import url("pages/bunpou.css");
 @import url("pages/kanji.css");
 @import url("pages/kazu-katsuyou.css");
 
-/* tema (harus terakhir) */
+/* theme (must come last) */
 @import url("themes/book2-blue.css");

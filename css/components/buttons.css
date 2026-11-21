@@ -1,4 +1,4 @@
-/* Tombol umum: .btn, .chip, kontrol (.controls), tab/segmen, dan label dwibahasa. */
+/* Shared buttons: .btn, .chip, controls (.controls), tabs/segments, and bilingual labels. */
 
 .tabs {
   display: flex;
