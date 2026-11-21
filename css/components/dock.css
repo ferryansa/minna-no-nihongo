@@ -1,4 +1,5 @@
-/* Dock bawah: tab halaman (ことば/ぶんぽう/かんじ), tab mode, pemilih bab, tombol ⚙. */
+/* Isi menu (dulu dock bawah): tab halaman (ことば/ぶんぽう/かんじ), tab mode, pemilih bab, tombol ⚙.
+   Bentuk menu lipatnya (tombol, panel, daftar) diatur di dock-menu.css yang dimuat sesudah ini. */
 
 .babbar {
   display: flex;
@@ -57,44 +58,14 @@
   color: var(--ai-ink);
 }
 
-.babbar {
-  flex: 1;
-  width: 100%;
-}
-
-.babbar .nav, .babbar select {
-  box-shadow: var(--shadow);
-}
-
 @media (max-width:560px) {
   .sicon {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-    border-radius: 9px;
-  }
-}
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+      border-radius: 9px;
+    }
 
-.sicon {
-  font-weight: 800;
-}
-
-.babbar .nav, .babbar select {
-  border: 2px solid var(--line);
-  border-radius: 14px;
-  font-family: var(--f-body);
-}
-
-.chip.dk i {
-  color: var(--muted);
-}
-
-.chip.dk[aria-pressed="true"] i {
-  color: #fff;
-}
-
-.babbar .nav, .babbar select {
-  box-shadow: none;
 }
 
 .sicon {
@@ -123,12 +94,6 @@
   color: var(--ai);
   font-weight: 800;
   padding: 7px 14px;
-}
-
-.chip.dk {
-  background: var(--sheet);
-  border-color: var(--line);
-  color: var(--ai);
 }
 
 .chip.dk[aria-pressed="true"] {
@@ -163,21 +128,6 @@
   right: 0;
   bottom: 0;
   z-index: 20;
-}
-
-.dock-in {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-.dock-act {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
-}
-
-.dock-act:empty {
-  display: none;
 }
 
 .dk {
@@ -219,15 +169,6 @@
   color: var(--muted);
 }
 
-.dock .babbar {
-  display: flex;
-}
-
-.dock .babbar select {
-  flex: 1;
-  min-width: 0;
-}
-
 .dock-tabs button {
   font: inherit;
   font-family: var(--f-body);
@@ -255,40 +196,9 @@
   color: var(--ai);
 }
 
-.dock-tabs button[aria-selected="true"] .di {
-  background: var(--ai);
-  color: #fff;
-}
-
-#dt-l[aria-selected="true"] {
-  color: var(--blue);
-  background: var(--blue-bg);
-}
-
 #dt-l .di {
   background: var(--blue-bg);
   color: var(--blue);
-}
-
-#dt-l[aria-selected="true"] .di {
-  background: var(--blue);
-  color: #fff;
-}
-
-@media (max-width:420px) {
-  .dock-tabs button {
-    font-size: .7rem;
-  }
-}
-
-.dock .babbar {
-  flex: 1 1 0;
-  width: auto;
-  min-width: 0;
-}
-
-.dk-set {
-  padding: 4px 2px;
 }
 
 .dk i {
@@ -302,12 +212,6 @@
   text-overflow: ellipsis;
 }
 
-@media (max-width:420px) {
-  .dock-tabs button i {
-    display: block;
-  }
-}
-
 .dock-act {
   min-width: 0;
 }
@@ -316,50 +220,9 @@
   width: 0;
 }
 
-.dock-tabs {
-  grid-template-columns: repeat(4,minmax(0,1fr));
-}
-
-.dock-tabs a.dt-link {
-  font: inherit;
-  font-family: var(--f-body);
-  border-radius: 12px;
-  padding: 5px 4px;
-  color: var(--muted);
-  font-weight: 800;
-  font-size: .78rem;
-  display: grid;
-  justify-items: center;
-  gap: 1px;
-  line-height: 1.2;
-  text-decoration: none;
-  min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.dock-tabs a.dt-link i {
-  font-style: normal;
-  font-weight: 500;
-  font-size: .64rem;
-}
-
-.dock-tabs a.dt-link .di {
-  background: var(--green-bg);
-  color: var(--green);
-}
-
 .dock-tabs a.dt-link:focus-visible {
   outline: 3px solid var(--ai);
   outline-offset: 2px;
-}
-
-.pageswitch {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 0 0 14px;
 }
 
 .pageswitch button {
@@ -390,18 +253,8 @@
   font-weight: 500;
 }
 
-.pageswitch .sicon {
-  flex: none;
-}
-
 .pageswitch button:hover {
   border-color: var(--ai);
-}
-
-.pageswitch button[aria-selected="true"] {
-  background: var(--ai);
-  border-color: var(--ai);
-  color: #fff;
 }
 
 .pageswitch button[aria-selected="true"] i {
@@ -409,19 +262,9 @@
   opacity: .9;
 }
 
-.pageswitch button[aria-selected="true"] .sicon {
-  background: rgba(255,255,255,.22);
-  color: #fff;
-}
-
 #ps-bp .sicon {
   background: var(--green-bg);
   color: var(--green);
-}
-
-#ps-bp[aria-selected="true"] {
-  background: var(--green);
-  border-color: var(--green);
 }
 
 .pageswitch button:focus-visible {
@@ -429,120 +272,17 @@
   outline-offset: 2px;
 }
 
-@media (max-width:420px) {
-  .pageswitch button {
-    font-size: 14px;
-    gap: 8px;
-    padding: 9px 10px;
-  }
-}
-
-.dock-tabs.bp {
-  grid-template-columns: repeat(3,minmax(0,1fr));
-}
-
-.dock-tabs.kt, .dock-tabs.kj {
-  grid-template-columns: repeat(3,minmax(0,1fr));
-}
-
 #sheetBP:empty {
   display: none;
-}
-
-.dock .pageswitch button {
-  justify-content: center;
-  gap: 6px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  font-size: .9rem;
-  color: var(--muted);
-}
-
-.dock .pageswitch button i {
-  display: inline;
-  font-size: .68rem;
-  font-weight: 600;
-}
-
-.dock .pageswitch .sicon {
-  width: 22px;
-  height: 22px;
-  font-size: .72rem;
-}
-
-.dock .pageswitch button[aria-selected="true"] {
-  background: var(--ai);
-  color: #fff;
-}
-
-.dock-tabs button {
-  grid-auto-flow: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: .82rem;
-}
-
-.dock-tabs button i {
-  display: none !important;
-}
-
-.dock-tabs .di {
-  width: 24px;
-  height: 22px;
-  font-size: .72rem;
-  border-radius: 7px;
 }
 
 .dk {
   min-height: 46px;
 }
 
-.dock .babbar select {
-  min-height: 46px;
-}
-
-.dk-set {
-  flex: 0 0 52px;
-  font-size: 1.35rem;
-}
-
-.dock .dk,
-.dock .babbar .nav,
-.dock .babbar select,
-.dock-tabs button,
-.dock .pageswitch button {
-  height: 42px;
-  min-height: 42px;
-  box-sizing: border-box;
-}
-
-.dock-tabs button {
-  padding: 0 4px;
-}
-
-.dock .pageswitch button {
-  padding: 0 8px;
-}
-
 #ps-kj .sicon {
   background: var(--blue-bg);
   color: var(--blue);
-}
-
-#ps-kj[aria-selected="true"] {
-  background: var(--blue);
-}
-
-.dock .pageswitch {
-  grid-template-columns: repeat(3,minmax(0,1fr));
-}
-
-@media (max-width:440px) {
-  .dock .pageswitch button i {
-    display: none;
-  }
 }
 
 html[data-book="2"] #dt-l {
@@ -551,16 +291,6 @@ html[data-book="2"] #dt-l {
 
 html[data-book="2"] .dock-tabs.kt {
   grid-template-columns: repeat(2,minmax(0,1fr)) !important;
-}
-
-.dock {
-  padding: 5px 8px calc(5px + env(safe-area-inset-bottom,0px));
-}
-
-.dock-in {
-  display: grid;
-  gap: var(--dock-gap) 8px;
-  align-items: center;
 }
 
 .dock-tabs {
@@ -572,15 +302,6 @@ html[data-book="2"] .dock-tabs.kt {
   min-width: 0;
 }
 
-.dock .pageswitch {
-  display: flex;
-  gap: 2px;
-  padding: 2px;
-  border-radius: 999px;
-  background: var(--rose-bg);
-  margin: 0;
-}
-
 .dock .dk,
 .dock .babbar .nav,
 .dock .babbar select {
@@ -588,25 +309,6 @@ html[data-book="2"] .dock-tabs.kt {
   min-height: var(--btn-h);
   border-width: 1.5px;
   border-radius: 999px;
-}
-
-.dock .dk {
-  font-size: .95rem;
-}
-
-.dock .dk i {
-  display: none;
-}
-
-.dock .dk-set {
-  flex: 0 0 var(--btn-h);
-  width: var(--btn-h);
-  padding: 0;
-  font-size: 1.1rem;
-}
-
-.dock .babbar {
-  gap: 6px;
 }
 
 .dock .babbar .nav {
@@ -638,18 +340,6 @@ html[data-book="2"] .dock-tabs.kt {
   transition: background .15s,color .15s,flex-grow .2s;
 }
 
-.dock-tabs button {
-  flex: 1 1 0;
-}
-
-.dock .pageswitch button {
-  flex: 0 0 auto;
-}
-
-.dock-tabs button i, .dock .pageswitch button i {
-  display: none !important;
-}
-
 .dock-tabs .di, .dock .pageswitch .sicon {
   display: grid;
   place-items: center;
@@ -661,76 +351,11 @@ html[data-book="2"] .dock-tabs.kt {
   font-weight: 800;
 }
 
-.dock-tabs button[aria-selected="true"] {
-  background: var(--sheet);
-  color: var(--ai);
-  box-shadow: 0 1px 4px color-mix(in srgb,var(--ai) 22%,transparent);
-}
-
-.dock .pageswitch button[aria-selected="true"] {
-  box-shadow: 0 2px 6px color-mix(in srgb,var(--ai) 28%,transparent);
-}
-
 @media (max-width:560px) {
-  .dock-tabs button, .dock .pageswitch button {
-    font-size: 0;
-    gap: 0;
-    padding: 0 7px;
-    flex: 0 0 auto;
-  }
-
-  .dock-tabs button[aria-selected="true"],
-  .dock .pageswitch button[aria-selected="true"] {
-    font-size: .8rem;
-    gap: 6px;
-    padding: 0 11px;
-  }
-
   .dock-tabs {
-    justify-content: space-between;
-  }
+      justify-content: space-between;
+    }
 
-  .dock-tabs button[aria-selected="true"] {
-    flex: 1 1 auto;
-  }
-}
-
-@media (max-width:360px) {
-  .dock {
-    padding-inline: 6px;
-  }
-
-  .dock-in {
-    gap: var(--dock-gap) 5px;
-  }
-
-  .dock-tabs button, .dock .pageswitch button {
-    padding: 0 5px;
-  }
-
-  .dock-tabs button[aria-selected="true"],
-  .dock .pageswitch button[aria-selected="true"] {
-    padding: 0 8px;
-    font-size: .74rem;
-  }
-}
-
-@media (min-width:900px) {
-  .dock-act {
-    grid-row: 1;
-  }
-
-  .dock-tabs {
-    grid-row: 1;
-  }
-
-  .dock .pageswitch {
-    grid-row: 1;
-  }
-
-  .dock-tabs button {
-    flex: 0 0 auto;
-  }
 }
 
 .chip.dk {
@@ -744,39 +369,6 @@ html[data-book="2"] .dock-tabs.kt {
   font-size: .6rem;
 }
 
-.dock {
-  transition: transform .25s ease;
-}
-
-.dock.dock-hide {
-  transform: translateY(calc(100% + 4px));
-}
-
-@media (min-width:900px) {
-  .dock.dock-hide {
-    transform: translate(-50%,calc(100% + 4px));
-  }
-}
-
-.dock-in {
-  grid-template-columns: auto minmax(0,1fr) auto;
-}
-
-.dock-act {
-  grid-column: 1/-1;
-  order: 0;
-}
-
-.dock .pageswitch {
-  grid-column: 1;
-  order: 1;
-}
-
-.dock-tabs {
-  grid-column: 2;
-  order: 2;
-}
-
 #dockSet {
   grid-column: 3;
   order: 3;
@@ -784,36 +376,17 @@ html[data-book="2"] .dock-tabs.kt {
 }
 
 @media (min-width:900px) {
-  .dock-in {
-    grid-template-columns: auto minmax(160px,1fr) auto auto;
-  }
-
   .dock-act,
-  .dock .pageswitch,
-  .dock-tabs,
-  #dockSet {
-    grid-row: 1;
-  }
-
-  .dock .pageswitch {
-    grid-column: 1;
-  }
-
-  .dock-act {
-    grid-column: 2;
-  }
-
-  .dock-tabs {
-    grid-column: 3;
-  }
+    .dock .pageswitch,
+    .dock-tabs,
+    #dockSet {
+      grid-row: 1;
+    }
 
   #dockSet {
-    grid-column: 4;
-  }
+      grid-column: 4;
+    }
 
-  .dock-act:empty ~ .dock-tabs {
-    grid-column: 3;
-  }
 }
 
 #dockSet:disabled {
@@ -826,34 +399,9 @@ html[data-book="2"] .dock-tabs.kt {
   border-color: var(--line);
 }
 
-.dk,
-.dock-tabs button,
-.pageswitch button {
-  transition: background .15s,border-color .15s,color .15s,box-shadow .15s,transform .12s;
-}
-
 .dk:active,
 .pageswitch button:active,
 .dock-tabs button:active {
   transform: scale(.96);
 }
 
-.dock {
-  background: color-mix(in srgb,var(--sheet) 90%,transparent);
-  -webkit-backdrop-filter: saturate(1.4) blur(14px);
-  backdrop-filter: saturate(1.4) blur(14px);
-  border-top: 1.5px solid var(--line);
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -8px 28px color-mix(in srgb,var(--ai) 10%,transparent);
-}
-
-@media (min-width:900px) {
-  .dock {
-    left: 50%;
-    right: auto;
-    width: min(1020px,100% - 24px);
-    transform: translateX(-50%);
-    border: 1.5px solid var(--line);
-    border-bottom: 0;
-  }
-}
